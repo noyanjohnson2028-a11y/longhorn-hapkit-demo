@@ -9,6 +9,11 @@ Build resources and Arduino firmware for my YouTube series about a Longhorn Hapk
 - [Original camp project, lab guides, and design files](https://github.com/rneum/RobotCamp2026)
 - [3D-print files](https://github.com/rneum/RobotCamp2026/tree/main/Hapkit%20Parts/1DOF%20STL)
 
+## Video resources
+
+- [Overview and demo script](video/overview-script.md)
+- [Demo clip order](video/demo-clips.md)
+
 ## What it does
 
 An encoder measures movement, an Arduino calculates a response, and a motor applies force to the handle. The same mechanism can simulate springs, walls, damping, friction, bumps, and a valley.
