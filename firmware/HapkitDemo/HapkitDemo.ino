@@ -26,6 +26,10 @@ Custom demo adaptation of https://github.com/rneum/RobotCamp2026
 #define ENCODER_OPTIMIZE_INTERRUPTS
 #include <Encoder.h>
 
+#if !defined(__AVR_ATmega328P__) || F_CPU != 16000000UL
+#error "Use an Uno R3 / ATmega328P at 16 MHz for this Timer1 firmware."
+#endif
+
 const int MOTOR_IN1 = 5;
 const int MOTOR_IN2 = 4;
 const int MOTOR_PWM = 9;
@@ -45,10 +49,6 @@ char mode = '0';
 float position = 0;
 float previousPosition = 0;
 float velocity = 0;
-
-float massPosition = 0.5;
-float massVelocity = 0;
-const float MASS_INITIAL_POSITION = 0.5;
 
 int previousWallSide = 0;
 float impactTime = 0;
@@ -82,9 +82,6 @@ void resetState() {
   position = 0;
   previousPosition = 0;
   velocity = 0;
-
-  massPosition = MASS_INITIAL_POSITION;
-  massVelocity = 0;
 
   previousWallSide = 0;
   impactTime = 0;

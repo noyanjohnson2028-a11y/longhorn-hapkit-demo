@@ -1,0 +1,17 @@
+name: Compile Uno firmware
+on: [push, pull_request, workflow_dispatch]
+permissions:
+  contents: read
+jobs:
+  compile:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: arduino/setup-arduino-cli@v2.0.0
+      - name: Install board and library
+        run: |
+          arduino-cli core update-index
+          arduino-cli core install arduino:avr
+          arduino-cli lib install Encoder
+      - name: Compile for Uno R3
+        run: arduino-cli compile --fqbn arduino:avr:uno firmware/HapkitDemo
